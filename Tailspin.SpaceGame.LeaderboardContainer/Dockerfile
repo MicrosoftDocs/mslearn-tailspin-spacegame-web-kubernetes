@@ -4,10 +4,10 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
-COPY ["Tailspin.SpaceGame.LeaderboardContainer/Tailspin.SpaceGame.LeaderboardContainer.csproj", "Tailspin.SpaceGame.LeaderboardContainer/"]
+COPY ["Tailspin.SpaceGame.LeaderboardContainer.csproj", "Tailspin.SpaceGame.LeaderboardContainer/"]
 
 RUN dotnet restore "Tailspin.SpaceGame.LeaderboardContainer/Tailspin.SpaceGame.LeaderboardContainer.csproj"
-COPY . Tailspin.SpaceGame.LeaderboardContainer/
+COPY . .
 WORKDIR "/src/Tailspin.SpaceGame.LeaderboardContainer"
 RUN dotnet build "Tailspin.SpaceGame.LeaderboardContainer.csproj" -c Release -o /app/build
 
