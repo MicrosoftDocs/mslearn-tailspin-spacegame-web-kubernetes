@@ -7,7 +7,7 @@ WORKDIR /src
 COPY ["Tailspin.SpaceGame.LeaderboardContainer.csproj", "Tailspin.SpaceGame.LeaderboardContainer/"]
 
 RUN dotnet restore "Tailspin.SpaceGame.LeaderboardContainer/Tailspin.SpaceGame.LeaderboardContainer.csproj"
-COPY . .
+COPY . Tailspin.SpaceGame.LeaderboardContainer/
 WORKDIR "/src/Tailspin.SpaceGame.LeaderboardContainer"
 RUN dotnet build "Tailspin.SpaceGame.LeaderboardContainer.csproj" -c Release -o /app/build
 
