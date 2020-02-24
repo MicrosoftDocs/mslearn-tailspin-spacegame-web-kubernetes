@@ -99,8 +99,8 @@ stages:
         tags: |
           $(leaderboardTag)
           
-    - upload: manifests2
-      artifact: manifests
+    - upload: manifests
+      artifact: manifests2
 
 - stage: Deploy2
   displayName: Deploy stage
