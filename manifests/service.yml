@@ -14,7 +14,7 @@ kind: Service
 metadata:
     name: tailspinspacegameleaderboardcontainer
 spec:
-    type: LoadBalancer
+    type: ClusterIP
     ports:
     - port: 80 
     selector:
