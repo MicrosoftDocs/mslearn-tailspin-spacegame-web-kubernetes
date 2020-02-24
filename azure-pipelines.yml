@@ -13,11 +13,11 @@ variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '28d7f9db-c9e4-477c-9a87-86e6f2690548'
   containerRegistry: 'tailspinspacegameprod.azurecr.io'
-  webImageRepository: 'tailspinspacegameweb'
+  imageRepository: 'edkaimmslearntailspinspacegamewebkubernetes'
   webDockerfilePath: 'Tailspin.SpaceGame.Web/Dockerfile'
-  leaderboardImageRepository: 'tailspinspacegameleaderboardcontainer'
   leaderboardDockerfilePath: 'Tailspin.SpaceGame.LeaderboardContainer/Dockerfile'
-  tag: '$(Build.BuildId)'
+  webTag: '$(Build.BuildId)-web'
+  leaderboardTag: '$(Build.BuildId)-leaderboard'
   imagePullSecret: 'tailspinspacegameprod9626-auth'
 
   # Agent VM image name
@@ -38,11 +38,11 @@ stages:
       inputs:
         command: buildAndPush
         buildContext: $(Build.Repository.LocalPath)
-        repository: $(webImageRepository)
+        repository: $(imageRepository)
         dockerfile: $(webDockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
-          $(tag)
+          $(webTag)
           
     - upload: manifests
       artifact: manifests
@@ -78,7 +78,7 @@ stages:
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
-                $(containerRegistry)/$(webImageRepository):$(tag)
+                $(containerRegistry)/$(imageRepository):$(webTag)
 
 - stage: Build2
   displayName: Build stage
@@ -93,11 +93,11 @@ stages:
       inputs:
         command: buildAndPush
         buildContext: $(Build.Repository.LocalPath)
-        repository: $(leaderboardImageRepository)
+        repository: $(imageRepository)
         dockerfile: $(leaderboardDockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
-          $(tag)
+          $(leaderboardTag)
           
     - upload: manifests
       artifact: manifests
@@ -133,4 +133,4 @@ stages:
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
-                $(containerRegistry)/$(leaderboardImageRepository):$(tag)
+                $(containerRegistry)/$(imageRepository):$(leaderboardTag)
