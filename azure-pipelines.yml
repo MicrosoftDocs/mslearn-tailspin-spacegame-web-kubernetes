@@ -111,7 +111,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'tailspinspacegameleaderboardcontainer.spikekubernetes'
+    environment: 'EdKaimmslearntailspinspacegamewebkubernetes.spikekubernetes'
     strategy:
       runOnce:
         deploy:
