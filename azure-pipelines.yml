@@ -80,7 +80,7 @@ stages:
               containers: |
                 $(containerRegistry)/$(imageRepository):$(webTag)
 
-- stage: Build
+- stage: Build2
   displayName: Build stage
   jobs:  
   - job: Build
@@ -102,7 +102,7 @@ stages:
     - upload: manifests
       artifact: manifests
 
-- stage: Deploy
+- stage: Deploy2
   displayName: Deploy stage
   dependsOn: Build
 
