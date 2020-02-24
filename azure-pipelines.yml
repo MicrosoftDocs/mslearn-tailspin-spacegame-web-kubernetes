@@ -99,7 +99,7 @@ stages:
         tags: |
           $(leaderboardTag)
           
-    - upload: manifests
+    - upload: manifests2
       artifact: manifests
 
 - stage: Deploy2
@@ -128,8 +128,8 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/manifests/deployment.yml
-                $(Pipeline.Workspace)/manifests/service.yml
+                $(Pipeline.Workspace)/manifests2/deployment.yml
+                $(Pipeline.Workspace)/manifests2/service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
