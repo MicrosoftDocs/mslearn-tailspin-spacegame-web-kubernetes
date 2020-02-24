@@ -1,16 +1,33 @@
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: edkaimmslearntailspinspacegamewebkubernetes 
+  name: tailspinspacegameweb
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: edkaimmslearntailspinspacegamewebkubernetes 
+        app: tailspinspacegameweb
     spec:
       containers:
-        - name: edkaimmslearntailspinspacegamewebkubernetes 
-          image: tailspinspacegameprod.azurecr.io/edkaimmslearntailspinspacegamewebkubernetes
+        - name: tailspinspacegameweb
+          image: tailspinspacegameprod.azurecr.io/web
+          ports:
+          - containerPort: 80
+---
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: tailspinspacegameleaderboardcontainer
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tailspinspacegameleaderboardcontainer
+    spec:
+      containers:
+        - name: tailspinspacegameleaderboardcontainer
+          image: tailspinspacegameprod.azurecr.io/leaderboard
           ports:
           - containerPort: 80
