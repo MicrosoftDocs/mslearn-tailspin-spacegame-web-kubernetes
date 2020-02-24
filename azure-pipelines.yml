@@ -13,8 +13,9 @@ variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '28d7f9db-c9e4-477c-9a87-86e6f2690548'
   containerRegistry: 'tailspinspacegameprod.azurecr.io'
-  webImageRepository: 'edkaimmslearntailspinspacegamewebkubernetes'
+  webImageRepository: 'web'
   webDockerfilePath: 'Tailspin.SpaceGame.Web/Dockerfile'
+  leaderboardImageRepository: 'leaderboard'
   leaderboardDockerfilePath: 'Tailspin.SpaceGame.LeaderboardContainer/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'tailspinspacegameprod9626-auth'
@@ -39,6 +40,17 @@ stages:
         buildContext: $(Build.Repository.LocalPath)
         repository: $(webImageRepository)
         dockerfile: $(webDockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        buildContext: $(Build.Repository.LocalPath)
+        repository: $(leaderboardImageRepository)
+        dockerfile: $(leaderboardDockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
@@ -78,4 +90,5 @@ stages:
                 $(imagePullSecret)
               containers: |
                 $(containerRegistry)/$(webImageRepository):$(tag)
+                $(containerRegistry)/$(leaderboardImageRepository):$(tag)
 
