@@ -1,16 +1,16 @@
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: tailspinspacegameweb
+  name: web
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: tailspinspacegameweb
+        app: web
     spec:
       containers:
-        - name: tailspinspacegameweb
+        - name: web
           image: tailspinspacegameprod.azurecr.io/web
           ports:
           - containerPort: 80
@@ -18,16 +18,16 @@ spec:
 apiVersion : apps/v1beta1
 kind: Deployment
 metadata:
-  name: tailspinspacegameleaderboardcontainer
+  name: leaderboard
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: tailspinspacegameleaderboardcontainer
+        app: leaderboard
     spec:
       containers:
-        - name: tailspinspacegameleaderboardcontainer
+        - name: leaderboard
           image: tailspinspacegameprod.azurecr.io/leaderboard
           ports:
           - containerPort: 80

@@ -1,10 +1,10 @@
-# Default values for tailspinspacegameleaderboardcontainer.
+# Default values for leaderboard.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-fullnameOverride: tailspinspacegameleaderboardcontainer
+fullnameOverride: leaderboard
 replicaCount: 1
 image:
-  repository: tailspinspacegameleaderboardcontainer
+  repository: leaderboard
   tag: stable
   pullPolicy: IfNotPresent
 imagePullSecrets: []

@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "tailspinspacegameweb.fullname" . -}}
+{{- $fullName := include "leaderboard.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
 {{- $ingressPath := .Values.ingress.path -}}
 apiVersion: extensions/v1beta1
@@ -7,8 +7,8 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    app: {{ template "tailspinspacegameweb.name" . }}
-    chart: {{ template "tailspinspacegameweb.chart" . }}
+    app: {{ template "leaderboard.name" . }}
+    chart: {{ template "leaderboard.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 {{- with .Values.ingress.annotations }}

@@ -1,10 +1,10 @@
-# Default values for tailspinspacegameweb.
+# Default values for web.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-fullnameOverride: tailspinspacegameweb
+fullnameOverride: web
 replicaCount: 1
 image:
-  repository: tailspinspacegameweb
+  repository: web
   tag: stable
   pullPolicy: IfNotPresent
 imagePullSecrets: []

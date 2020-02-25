@@ -1,10 +1,10 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ template "tailspinspacegameleaderboardcontainer.fullname" . }}
+  name: {{ template "leaderboard.fullname" . }}
   labels:
-    app: {{ template "tailspinspacegameleaderboardcontainer.name" . }}
-    chart: {{ template "tailspinspacegameleaderboardcontainer.chart" . }}
+    app: {{ template "leaderboard.name" . }}
+    chart: {{ template "leaderboard.chart" . }}
     draft: {{ .Values.draft | default "draft-app" }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
@@ -12,12 +12,12 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ template "tailspinspacegameleaderboardcontainer.name" . }}
+      app: {{ template "leaderboard.name" . }}
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "tailspinspacegameleaderboardcontainer.name" . }}
+        app: {{ template "leaderboard.name" . }}
         draft: {{ .Values.draft | default "draft-app" }}
         release: {{ .Release.Name }}
       annotations:
@@ -48,7 +48,7 @@ spec:
             - name: {{ $ref }}_{{ $key }}
               valueFrom:
                 secretKeyRef:
-                  name: {{ template "tailspinspacegameleaderboardcontainer.fullname" $root }}-{{ $ref | lower }}
+                  name: {{ template "leaderboard.fullname" $root }}-{{ $ref | lower }}
                   key: {{ $key }}
             {{- end }}
             {{- end }}
