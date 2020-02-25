@@ -11,7 +11,7 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '69003680-dbb5-4f47-a6c2-b50efb8d5f3f'
+  dockerRegistryServiceConnection: '28d7f9db-c9e4-477c-9a87-86e6f2690548'
   containerRegistry: 'tailspinspacegameprod.azurecr.io'
   webImageRepository: 'web'
   webDockerfilePath: 'Tailspin.SpaceGame.Web/Dockerfile'
@@ -19,6 +19,7 @@ variables:
   leaderboardDockerfilePath: 'Tailspin.SpaceGame.LeaderboardContainer/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'mypullsecret'
+
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -67,7 +68,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'EdKaimmslearntailspinspacegamewebkubernetes.spikekubernetes'
+    environment: 'spacegame.default'
     strategy:
       runOnce:
         deploy:
