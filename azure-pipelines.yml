@@ -11,14 +11,14 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '28d7f9db-c9e4-477c-9a87-86e6f2690548'
+  dockerRegistryServiceConnection: '69003680-dbb5-4f47-a6c2-b50efb8d5f3f'
   containerRegistry: 'tailspinspacegameprod.azurecr.io'
   webImageRepository: 'web'
   webDockerfilePath: 'Tailspin.SpaceGame.Web/Dockerfile'
   leaderboardImageRepository: 'leaderboard'
   leaderboardDockerfilePath: 'Tailspin.SpaceGame.LeaderboardContainer/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'tailspinspacegameprod9626-auth'
+  imagePullSecret: 'mypullsecret'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
