@@ -59,7 +59,7 @@ stages:
     - task: AzureWebAppContainer@1
       inputs:
        appName: $(WebAppName)
-       azureSubscription: 'Resource Manager - Tailspin - Space Game 2'
+       azureSubscription: 'Resource Manager - Tailspin - Space Game2'
        imageName: $(RegistryName)/$(webRepository):$(build.buildId)
     - task: KubernetesManifest@0
       displayName: Create imagePullSecret
