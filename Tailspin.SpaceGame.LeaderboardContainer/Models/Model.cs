@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace TailSpin.SpaceGame.LeaderboardContainer
 {
@@ -8,7 +8,7 @@ namespace TailSpin.SpaceGame.LeaderboardContainer
     public abstract class Model
     {
         // The value that uniquely identifies this object.
-        [JsonProperty(PropertyName = "id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
     }
 }
