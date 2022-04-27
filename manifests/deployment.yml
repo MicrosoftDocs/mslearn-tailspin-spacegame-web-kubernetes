@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: tailspinspacegameprod.azurecr.io/web
+          image: openshift-sandbox-chunyinlai-stage-1651024425909/web
           ports:
           - containerPort: 80
 ---
@@ -34,6 +34,6 @@ spec:
     spec:
       containers:
         - name: leaderboard
-          image: tailspinspacegameprod.azurecr.io/leaderboard
+          image: openshift-sandbox-chunyinlai-stage-1651024425909/leaderboard
           ports:
           - containerPort: 80
