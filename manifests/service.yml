@@ -1,21 +1,36 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: leaderboard
+  name: leaderboard
 spec:
-    type: LoadBalancer
-    ports:
-    - port: 80 
-    selector:
-        app: leaderboard
+  selector:
+    app: leaderboard
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-    name: web
+  name: web
 spec:
-    type: LoadBalancer
-    ports:
-    - port: 80 
-    selector:
-        app: web
+  selector:
+    app: web
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: web
+spec:
+  to:
+    kind: Service
+    name: web
+    weight: 100
+  port:
+    targetPort: 8080
+  wildcardPolicy: None
