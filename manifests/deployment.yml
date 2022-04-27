@@ -16,7 +16,7 @@ spec:
         - name: web
           image: openshift-sandbox-chunyinlai-stage-1651024425909/web
           ports:
-          - containerPort: 80
+          - containerPort: 8080
 ---
 apiVersion : apps/v1
 kind: Deployment
@@ -36,4 +36,4 @@ spec:
         - name: leaderboard
           image: openshift-sandbox-chunyinlai-stage-1651024425909/leaderboard
           ports:
-          - containerPort: 80
+          - containerPort: 8080
